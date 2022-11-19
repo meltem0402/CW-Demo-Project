@@ -1,7 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import CreateAd from '@salesforce/apex/leadUI.CreateAd';
 import CreateLead from '@salesforce/apex/leadUI.CreateLead';
-import {ShowToastEvent} from 'Lightning/platformShowToastEvent';
+//import {ShowToastEvent} from 'Lightning/platformShowToastEvent';
 
 export default class LandingPageForm extends LightningElement {
 
@@ -41,14 +41,20 @@ export default class LandingPageForm extends LightningElement {
     }
 
 
-    @api UTM_Campaign__c;
-    @api UTM_Content__c;
-    @api UTM_Medium__c;
-    @api UTM_Referer__c;
-    @api UTM_Source__c;
-    @api UTM_Term__c;
-    @api UTM_Id__c;
+    @api UTM_Campaign;
+    @api UTM_Content;
+    @api UTM_Medium;
+    @api UTM_Referer;
+    @api UTM_Source;
+    @api UTM_Term;
+    @api UTM_Id;
 
+    connectedCallback(){
+
+
+
+
+    }
 
 
 
