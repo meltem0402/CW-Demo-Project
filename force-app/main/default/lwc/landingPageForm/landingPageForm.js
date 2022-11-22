@@ -83,11 +83,85 @@ export default class LandingPageForm extends LightningElement {
     }
 
     onchangeHandler(event){
-        
+        switch(event.target.name){
+            case 'fname':
+                this.firstName = event.target.value;
+                break;
+            case 'lname':
+                this.lastName = event.target.value;
+                break;
+            case 'email':
+                this.email = event.target.value;
+                break; 
+            case 'phone':
+                this.phone = event.target.value;
+                break;
+            case 'street':
+                this.street = event.target.value;
+                break;
+            case 'city':
+                this.city = event.target.value;
+                break;
+            case 'state':
+                this.state = event.target.value;
+                break; 
+            case 'zipcode':
+                this.zipCode = event.target.value;
+                break;
+            case 'country':
+                this.country = event.target.value;
+                break;
+            case 'infodate':
+                this.infoDate = event.target.value;
+                break;
+            case 'course':
+                this.course = event.target.value;
+                break;
+            default:
+                break;            
+        }
 
+        this.leadRecord = {
+            FirstName: this.firstName,
+            LastName: this.lastName,
+            Street: this.street,
+            City: this.city,
+            State: this.state,
+            PostalCode: this.zipCode,
+            Country: this.country,
+            Email: this.email,
+            Phone: this.phone,
+            Company: 'Test Account',
+            Ad__c: this.advertiseId?this.advertiseId:''
+        }
 
     }
 
+    createLeadHandler(){
 
+        CreateLead({singleLead:this.leadRecord, Search:this.UTM_Source})
+        .then(data =>{
+            this.isRegistered = true;
 
-}
+            const evt = new ShowToastEvent({
+                title: 'Success',
+                message: 'Lead record has been created!' ,
+                variant: 'success',
+                mode: 'dismissable'
+              });
+              this.dispatchEvent(evt);
+        })
+        .catch(error =>{
+            this.isRegistered = false;
+
+            const evt = new ShowToastEvent({
+                title: 'Error',
+                message: error.body.message ,
+                variant: 'error',
+                mode: 'dismissable'
+              });
+              this.dispatchEvent(evt);
+            })
+        }
+
+    }

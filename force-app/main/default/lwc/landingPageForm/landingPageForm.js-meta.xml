@@ -9,6 +9,16 @@
         <target>lightningCommunity__Default</target>
     </targets>
 
-    
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="UTM_Campaign" type="String" default=" " />
+            <property name="UTM_Content" type="String" default=" " />
+            <property name="UTM_Medium" type="String" default=" " />
+            <property name="UTM_Referer" type="String" default=" " />
+            <property name="UTM_Source" type="String" default=" " />
+            <property name="UTM_Term" type="String" default=" " />
+            <property name="UTM_Id" type="String" default=" " />
+        </targetConfig>
+    </targetConfigs>
 
 </LightningComponentBundle>
